@@ -1,58 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>My Web Page</title>
+                              
+   <title>My Test Page</title>
+   <style>
+body{
+background-color:powderblue;
+}
+h{color:blue;
+}
+p{color:gree;}
+</style>
+
+   
 </head>
 
 <body>
-
-    <!-- Task 2: Headings, Paragraphs, HR, BR -->
-    <h1>Welcome to My Web Page</h1>
-    <h2>This is an H2 Heading</h2>
-    <h3>This is an H3 Heading</h3>
-    <h4>This is an H4 Heading</h4>
-    <h5>This is an H5 Heading</h5>
-    <h6>This is an H6 Heading</h6>
-
-    <p>This paragraph gives you a brief intro about the page.</p>
-    <hr>
-    <p>This is a second paragraph.<br>
-        And this line starts after a line break.</p>
-
-    <!-- Task 3: Lists -->
-    <h2>My Top 5 Favorite Books</h2>
-    <ol>
-        <li>The Alchemist</li>
-        <li>Atomic Habits</li>
-        <li>Sapiens</li>
-        <li>1984</li>
-        <li>Clean Code</li>
-    </ol>
-
-    <h2>My Top 5 Hobbies</h2>
-    <ul>
+    <h1>HEADING 1</h1>
+    <h2>HEADING 2</h2>
+    <h3>HEADING 3</h3>
+    <h4>HEADING 4</h4>
+    <h5>HEADING 5</h5>
+    <h6>HEADING 6</h6>
+<p>My Order List</p>
+ <ol>
+        <li>IT BASIC SKILLS</li>
+        <li>HOME ALONE</li>
+        <li>WHITE SNOW </li>
+        <li>RUN </li>
+        <li>WEB CODE</li>
+  </ol>
+<p>My other List</p>
+  <ul>
         <li>Reading</li>
-        <li>Photography</li>
+        <li>Sports</li>
         <li>Traveling</li>
-        <li>Playing Guitar</li>
-        <li>Learning New Skills</li>
-    </ul>
+        <li>Swimming</li>
+        <li>New Skills</li>
+  </ul>
+  <img src="p.jpeg" alt="picture" height="400" width="1000">
+    <p>My Useful Links</p>
+  <p>
+<ul>
+   <li><a href="https://www.facebook.com" target="blank">Facebook</a><br></li>
+   <li> <a href="https://www.suza.ac.tz" target= "blank">Suza</a></li>
+</ul>
+   </p>
+<p>My Schedule Table</p>
+<table border = "1" height="40%" width="40%">
+<tr><th>Day</th>
+   <th>Task</th>
+   <th>Mark</th>
+</tr>
+<tr><td>Monday</td>
+    <td>learning</td>
+    <td>Completed</td>
+</tr>
+<tr><td>Tyesday</td>
+    <td>excersise</td>
+    <td>Completed</td>
+</tr>
+<tr><td>Wednesday</td>
+   <td>Cooking</td>
+   <td>Not completed</td>
+</tr>
+<tr><td>Thursday</td>
+   <td>Running</td>
+   <td>completed</td>
+</tr>
+<tr><td>Friday</td>
+   <td>Playing</td>
+   <td>Not completed</td>
+</tr>
+</table>
 
-    <!-- Task 4: Images with alt text -->
-    <h2>My Favorite Images</h2>
-    <img src="https://via.placeholder.com/200" alt="Placeholder image of a nature scene" width="200">
-    <img src="https://via.placeholder.com/150" alt="Another placeholder image" width="150">
-
-    <!-- Task 5: Links -->
-    <h2>Useful Links</h2>
-    <p>
-        Visit <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a><br>
-        Watch videos on <a href="https://www.youtube.com" target="_blank">YouTube</a><br>
-        Learn code at <a href="https://www.freecodecamp.org" target="_blank">freeCodeCamp</a>
-    </p>
-
+ <p>My Registration Form</p>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+        
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br>
+        
+        <label>Interests:</label>
+        <input type="checkbox" id="Sports" name="interests" value="Sports">
+        <label for="reading">Reading</label>
+        <input type="checkbox" id="Football" name="interests" value="Football">
+        <label for="Games">Games</label>
+        <input type="checkbox" id="travel" name="interests" value="travel">
+        <label for="travel">Travel</label><br>
+        
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+            <option value="Tanzania">Tanzania</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Uganda">Uganda</option>
+            <option value="Congo">Congo</option>
+        </select><br>
+        <input type="submit" value="Submit">
+    </form>                        
 </body>
-
 </html>
