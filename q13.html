@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Super Nifty To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    li {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My super nifty to-do list</h1>
+  <ul id="list"></ul>
+
+  <div>
+    <input type="text" id="item" placeholder="Type your item here" />
+    <button id="add">add</button>
+    <button id="remove">remove</button>
+  </div>
+
+  <script>
+    // Get references to DOM elements
+    const itemInput = document.getElementById('item');
+    const addButton = document.getElementById('add');
+    const removeButton = document.getElementById('remove');
+    const list = document.getElementById('list');
+
+    // Function to update alternating background colors
+    function updateBackgroundColors() {
+      const items = list.getElementsByTagName('li');
+      for (let i = 0; i < items.length; i++) {
+        items[i].style.backgroundColor = (i % 2 === 0) ? 'white' : 'yellow';
+      }
+    }
+
+    // Add button event listener
+    addButton.addEventListener('click', function () {
+      const text = itemInput.value.trim();
+      if (text.length === 0) return;
+
+      const words = text.split(/\s+/); // Split by whitespace
+      words.forEach(word => {
+        const li = document.createElement('li');
+        li.textContent = word;
+        list.appendChild(li);
+      });
+
+      updateBackgroundColors();
+      itemInput.value = ''; // Clear input
+    });
+
+    // Remove button event listener
+    removeButton.addEventListener('click', function () {
+      const text = itemInput.value.trim().toLowerCase();
+      if (text.length === 0) return;
+
+      const items = list.getElementsByTagName('li');
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].textContent.toLowerCase() === text) {
+          list.removeChild(items[i]);
+          break; // Remove only the first matching item
+        }
+      }
+
+      updateBackgroundColors();
+      itemInput.value = ''; // Clear input
+    });
+  </script>
+
+</body>
+</html>

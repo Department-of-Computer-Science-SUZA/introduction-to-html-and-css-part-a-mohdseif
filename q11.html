@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Price Validator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    input, button {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    #result {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    #result.valid {
+      color: green;
+    }
+    #result.invalid {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Price Validator</h1>
+  <input type="text" id="priceInput" placeholder="Enter a price (e.g. $14.99)" />
+  <button onclick="validatePrice()">Validate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function validatePrice() {
+      const price = document.getElementById('priceInput').value.trim();
+      // Regex to validate price format
+      const regex = /^\$\d*\.{1}\d{2}$/;
+
+      const resultDiv = document.getElementById('result');
+      if (regex.test(price)) {
+        resultDiv.textContent = `"${price}" is a valid price.`;
+        resultDiv.className = 'valid';
+      } else {
+        resultDiv.textContent = `"${price}" is NOT a valid price.`;
+        resultDiv.className = 'invalid';
+      }
+    }
+  </script>
+
+</body>
+</html>

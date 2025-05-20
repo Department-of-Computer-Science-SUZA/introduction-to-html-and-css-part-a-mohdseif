@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Self-Closing Tag Matcher</title>
+</head>
+<body>
+
+<h2>Test Self-Closing HTML Tag Regex</h2>
+<textarea id="input" rows="6" cols="60" placeholder="Paste your tags here..."></textarea>
+<br/>
+<button onclick="testRegex()">Test Regex</button>
+
+<h3>Results:</h3>
+<ul id="results"></ul>
+
+<script>
+function testRegex() {
+  const input = document.getElementById('input').value.trim();
+  const results = document.getElementById('results');
+  results.innerHTML = '';
+
+  // Regular expression to match self-closing tags with optional attributes:
+  // Explanation:
+  // ^<                    - Start with '<'
+  // \s*                   - Optional whitespace
+  // ([a-zA-Z][\w-]*)      - Tag name: starts with letter, followed by letters, digits, underscores, or hyphens
+  // (                     - Start capture group for attributes
+  //    (?:\s+             - One or more spaces before attribute
+  //      [^\s=>\/]+       - Attribute name (not whitespace, =, > or /)
+  //      (?:=             - Optional equal sign followed by attribute value
+  //        (?:            - Start non-capturing group for value
+  //          "(?:[^"]*)"  - Double-quoted attribute value
+  //          |            - OR
+  //          '(?:[^']*)'  - Single-quoted attribute value
+  //        )
+  //      )?               - Attribute value is optional (some attributes can be valueless)
+  //    )*                 - Zero or more attributes
+  // )
+  // \s*\/>                - Optional whitespace then '/>'
+  // $                     - End of string
+
+  const regex = /^<\s*([a-zA-Z][\w-]*)(?:\s+[^\s=>\/]+(?:=(?:"[^"]*"|'[^']*'))?)*\s*\/>$/;
+
+  const isValid = regex.test(input);
+
+  const li = document.createElement('li');
+  li.textContent = `"${input}" is ` + (isValid ? 'Valid ✅' : 'Invalid ❌');
+  results.appendChild(li);
+}
+</script>
+
+</body>
+</html>
