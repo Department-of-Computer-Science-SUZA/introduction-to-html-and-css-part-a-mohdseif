@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Credit Card Validator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Credit Card Validator</h2>
+
+  <label for="cardNumber">Enter Credit Card Number:</label><br>
+  <input type="text" id="cardNumber" placeholder="e.g. 4111111111111111"><br>
+  <button onclick="validateCard()">Validate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function validateCreditCard(cardNumber) {
+      const patterns = [
+        {
+          type: "American Express",
+          regex: /^3[47][0-9]{13}$/,
+        },
+        {
+          type: "MasterCard",
+          regex: /^5[1-5][0-9]{14}$/,
+        },
+        {
+          type: "VISA",
+          regex: /^4([0-9]{12}|[0-9]{15})$/,
+        },
+        {
+          type: "Discover",
+          regex: /^6011[0-9]{11,12}$/,
+        },
+        {
+          type: "Diners Club",
+          regex: /^30[0-5][0-9]{11,13}$/,
+        },
+      ];
+
+      for (let pattern of patterns) {
+        if (pattern.regex.test(cardNumber)) {
+          return `${pattern.type} card is valid.`;
+        }
+      }
+
+      return "❌ Invalid credit card number.";
+    }
+
+    function validateCard() {
+      const cardNumber = document.getElementById("cardNumber").value.trim();
+      const result = validateCreditCard(cardNumber);
+      document.getElementById("result").innerText = result;
+    }
+  </script>
+
+</body>
+</html>

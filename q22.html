@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration Form</title>
+  <style>
+    label { display: block; margin-top: 10px; }
+    input, textarea, select { width: 300px; }
+    .error { color: red; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <h2>Student Registration Form</h2>
+  <form id="registrationForm" onsubmit="return validateForm()">
+    <label>Student Name:
+      <input type="text" id="name" name="name" maxlength="30">
+      <span class="error" id="nameError"></span>
+    </label>
+    <label>Register Number:
+      <input type="text" id="regNumber" name="regNumber">
+      <span class="error" id="regError"></span>
+    </label>
+    <label>Date of Birth:
+      <input type="date" id="dob" name="dob">
+    </label>
+    <label>Program:
+      <input type="text" id="program" name="program">
+    </label>
+    <label>Email ID:
+      <input type="email" id="email" name="email">
+      <span class="error" id="emailError"></span>
+    </label>
+    <label>Temporary Address:
+      <textarea id="tempAddress" name="tempAddress"></textarea>
+    </label>
+    <label>
+      <input type="checkbox" id="sameAddress"> Permanent address is same as temporary address
+    </label>
+    <label>Permanent Address:
+      <textarea id="permAddress" name="permAddress"></textarea>
+    </label>
+    <label>Phone Number:
+      <input type="text" id="phone" name="phone">
+      <span class="error" id="phoneError"></span>
+    </label>
+
+    <br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    // Copy address if checkbox is checked
+    document.getElementById('sameAddress').addEventListener('change', function () {
+      const temp = document.getElementById('tempAddress');
+      const perm = document.getElementById('permAddress');
+      if (this.checked) {
+        perm.value = temp.value;
+        perm.disabled = true;
+      } else {
+        perm.disabled = false;
+        perm.value = '';
+      }
+    });
+
+    // Main validation function
+    function validateForm() {
+      let isValid = true;
+
+      // Reset all error messages
+      document.getElementById("nameError").textContent = "";
+      document.getElementById("regError").textContent = "";
+      document.getElementById("emailError").textContent = "";
+      document.getElementById("phoneError").textContent = "";
+
+      // Validate name
+      const name = document.getElementById("name").value.trim();
+      if (!/^[A-Za-z\s]{1,30}$/.test(name)) {
+        document.getElementById("nameError").textContent = "Name must be alphabetic and ≤ 30 characters.";
+        isValid = false;
+      }
+
+      // Validate register number
+      const reg = document.getElementById("regNumber").value.trim();
+      if (!/^[A-Za-z0-9]+$/.test(reg)) {
+        document.getElementById("regError").textContent = "Register number should be alphanumeric only.";
+        isValid = false;
+      }
+
+      // Validate email
+      const email = document.getElementById("email").value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById("emailError").textContent = "Enter a valid email address.";
+        isValid = false;
+      }
+
+      // Validate phone number
+      const phone = document.getElementById("phone").value.trim();
+      if (!/^\d{10}$/.test(phone)) {
+        document.getElementById("phoneError").textContent = "Phone number must be exactly 10 digits.";
+        isValid = false;
+      }
+
+      return isValid;
+    }
+  </script>
+
+</body>
+</html>
